@@ -83,7 +83,8 @@
                     }
                 }
 
-                if ($.isEmptyObject(deleted)) deleted = undefined;
+                // check if array is empty (length === 0)
+                if (!deleted.length) deleted = undefined;
 
                 break;
 
