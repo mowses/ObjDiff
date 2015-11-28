@@ -5,6 +5,8 @@
 
 (function($) {
 
+    'use strict';
+
     function ObjDiff(obj1, obj2) {
         var item,
             type_obj1 = $.type(obj1),
@@ -92,8 +94,12 @@
                 deleted = {};
 
                 for (var i in obj2) {
-                    if (!obj1.hasOwnProperty(i)) {
-                        deleted[i] = null;
+                    // changed line below. See previous version
+                    // now, we are working the __proto__ properties
+                    // instead of using "hasOwnProperty" which prevented accessing __proto__ properties
+                    // now we must travel inside its inherited properties to look for changes
+                    if (obj1[i] === undefined) {
+                        deleted[i] = true;  // set deleted items as true
                         continue;
                     }
 
@@ -114,19 +120,25 @@
         return deleted;
     }
 
-    function delete_properties(obj, properties) {
+    /**
+     * [delete_properties description]
+     * @param  {boolean} delete_from_original set if should delete directly from original obj
+     */
+    function delete_properties(obj, properties, delete_from_original) {
         if (!obj) return obj;
 
-        switch ($.type(obj)) {
-            case 'object':
-                obj = $.extend({}, obj);
-                break;
+        if (!delete_from_original) {
+            switch ($.type(obj)) {
+                case 'object':
+                    obj = $.extend({}, obj);
+                    break;
 
-            case 'array':
-                obj = $.merge([], obj);
-                break;
+                case 'array':
+                    obj = $.merge([], obj);
+                    break;
 
-            default:
+                default:
+            }
         }
 
         switch ($.type(properties)) {
