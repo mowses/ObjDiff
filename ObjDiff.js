@@ -13,7 +13,7 @@
             type_obj2 = $.type(obj2),
             diffs = null;
 
-        if (type_obj2 === 'undefined' || type_obj2 === 'null') return obj1;
+        if (type_obj2 === 'undefined' || (type_obj2 === 'null' && obj1 !== obj2)) return obj1;
 
         switch (type_obj1) {
             case 'array':
