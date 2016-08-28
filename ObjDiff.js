@@ -20,7 +20,7 @@
 
                 item = [];
 
-                for (var i = 0; i < obj1.length; i++) {
+                for (var i = 0, t = obj1.length; i < t; i++) {
                     diffs = ObjDiff(obj1[i], obj2[i]);
 
                     if (diffs === undefined && obj1[i] !== undefined) continue;
