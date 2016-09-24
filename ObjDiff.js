@@ -34,6 +34,11 @@
 
             case 'object':
 
+                // prevent continue for non plain objects
+                // do not use $.isPlainObject because it will fail the tests
+                // using $.isPlainObject return FALSE for plain objects with __proto__. should return true
+                if (obj1.constructor.name != 'Object') return undefined;
+
                 item = {};
 
                 for (var i in obj1) {
@@ -91,6 +96,12 @@
                 break;
 
             case 'object':
+
+                // prevent continue for non plain objects
+                // do not use $.isPlainObject because it will fail the tests
+                // using $.isPlainObject return FALSE for plain objects with __proto__. should return true
+                if (obj2.constructor.name != 'Object') return undefined;
+
                 deleted = {};
 
                 for (var i in obj2) {
