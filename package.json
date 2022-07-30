@@ -1,0 +1,19 @@
+{
+  "name": "@mowses/objdiff",
+  "version": "1.0.0",
+  "description": "Return differences between two javascript objects.",
+  "main": "ObjDiff.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/mowses/ObjDiff.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/mowses/ObjDiff/issues"
+  },
+  "homepage": "https://github.com/mowses/ObjDiff#readme"
+}
