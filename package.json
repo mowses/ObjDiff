@@ -1,5 +1,6 @@
 {
   "name": "@mowses/objdiff",
+  "type": "module",
   "version": "1.0.0",
   "description": "Return differences between two javascript objects.",
   "main": "ObjDiff.js",
